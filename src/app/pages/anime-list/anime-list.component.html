@@ -1,0 +1,53 @@
+
+
+
+
+
+
+<div class="main" *ngIf="animesList.length > 0 ; else noAnimes"> 
+<div class="main-card" >
+  <div *ngIf="pagination">
+    <p>Number of animes found : {{ pagination.items.total }}</p>
+  </div>
+    <h2>Anime List</h2>
+    <div class="search-bar">
+      <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Find an Anime" (keydown.enter)="onSearch()">
+    </div>
+    <div class="card-box">
+      <div class="card" *ngFor="let anime of animesList"  (click)="goToAnime(anime.mal_id)">
+        <span class="anime-image">
+          <img [src]="anime.images.jpg.image_url" alt="{{ anime.title }}">
+        </span>
+        <span class="anime-title">{{ anime.title }}</span>
+        <!-- <span>{{anime.rating}}</span> -->
+        <!-- <span class="anime-desc">{{ anime.synopsis }}</span> -->
+         <span class="anime-members">{{anime.members}} Members</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+    <button *ngFor="let page of [currentPage-2, currentPage-1, currentPage, currentPage+1, currentPage+2]"
+            (click)="goToPage(page)"
+            [class.active]="page === currentPage"
+            [disabled]="page <= 0 || (pagination && page > pagination.last_visible_page)">
+             
+      {{ page }}
+    </button>
+  
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage+1 === null">Suivant</button>
+  </div>
+
+  <button (click)="loadMore()" [disabled]="animeService.isLoading()">
+    Charger plus d'animes
+  </button>
+</div>
+  <ng-template #noAnimes>
+    <p class="message">Aucun anime à afficher pour le moment.</p>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+    
+  </ng-template>
+  

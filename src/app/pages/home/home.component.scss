@@ -1,0 +1,31 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 14em;
+}
+
+
+h1 {
+    font-size: 72px;
+}
+
+.go-button {
+    background-color: #7f3ca8;
+    color: white;
+    border: none;
+    padding: 0.5em 2em;
+    font-size: 1.8em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2em;
+  }
+  
+  .go-button:hover {
+    background-color: #4a2261;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  

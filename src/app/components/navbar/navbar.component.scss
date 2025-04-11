@@ -1,0 +1,43 @@
+header {
+    width: 100%;
+    display: flex;
+    padding-inline: 2em;
+    padding-block: 0.8em;
+    background-color: #7f3ca8;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    // position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2; 
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5em;
+        
+        span {
+            cursor: pointer;
+            &:hover {
+                color: rgb(190, 190, 190);
+            } 
+        }
+
+
+        ul {
+            list-style: none;
+
+            li {
+                cursor: pointer;
+                &:hover {
+                    color: rgb(190, 190, 190);
+                }
+
+            }
+        }
+    }
+
+
+}

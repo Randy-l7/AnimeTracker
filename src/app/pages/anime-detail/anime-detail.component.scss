@@ -1,0 +1,15 @@
+.anime-detail {
+    margin-inline: 20em;
+
+}
+
+.anime-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .main-img {
+        object-fit: cover;
+                width: 15em;
+                height: 20em;
+    }
+}
