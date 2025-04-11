@@ -4,8 +4,8 @@
 
 
 
-<div class="main" *ngIf="animesList.length > 0 ; else noAnimes"> 
-<div class="main-card" >
+<div class="main" > 
+<div class="main-card"  >
   <div *ngIf="pagination">
     <p>Number of animes found : {{ pagination.items.total }}</p>
   </div>
@@ -13,8 +13,8 @@
     <div class="search-bar">
       <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Find an Anime" (keydown.enter)="onSearch()">
     </div>
-    <div class="card-box">
-      <div class="card" *ngFor="let anime of animesList"  (click)="goToAnime(anime.mal_id)">
+    <div class="card-box" *ngIf="animesList.length > 0 ; else noAnimes">
+      <div class="card" *ngFor="let anime of animesList"  (click)="goToAnime(anime.mal_id)" [@cardAnimation]>
         <span class="anime-image">
           <img [src]="anime.images.webp.large_image_url" alt="{{ anime.title }}">
         </span>

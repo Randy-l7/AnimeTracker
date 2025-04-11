@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { debounceTime } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 
 
@@ -13,10 +14,19 @@ import { Router } from '@angular/router';
   imports: [CommonModule,FormsModule],
   templateUrl: './anime-list.component.html',
   styleUrl: './anime-list.component.scss',
+  animations: [
+    trigger('cardAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }), 
+        animate('400ms 0ms', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 
   
 })
 export class AnimeListComponent implements OnInit {
+
 
 searchTerm: string = ''; 
 currentPage = 1;
