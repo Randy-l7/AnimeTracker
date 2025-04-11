@@ -1,15 +1,38 @@
 .anime-detail {
-    margin-inline: 20em;
+    margin-inline: 25em;
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    .secondary-info {
+        margin-top: 2em;
+        padding: 1em;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+    }
 
 }
 
 .anime-info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    width: 100%;
     .main-img {
         object-fit: cover;
-                width: 15em;
-                height: 20em;
+        width: 15em;
+        height: 20em;
+        border-radius: 5px;
+        
+    }
+    h1 {
+        margin-left: 2em;
+        font-weight: 900;
+        letter-spacing: 0.5rem;
+        font-size: 3rem;
+    }
+
+    
+
+    h1 {
+        display: block;
     }
 }

@@ -9,11 +9,11 @@
 
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
   
   html, body {
     height: 100%;
@@ -24,4 +24,28 @@
   body {
     font-family: 'Roboto', sans-serif;
   }
+  
+  .loading-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 6em;  /* Ajusté à 6em pour l'exemple */
+    font-size: 1.2em;  /* Taille de police ajustée */
+  }
+  
+  .spinner {
+    border: 0.3em solid rgba(255, 255, 255, 0.3);  /* Couleur de fond du spinner */
+    border-top: 0.3em solid #7f3ca8;  /* Couleur du bord supérieur du spinner */
+    border-radius: 50%;  /* Cercle parfait */
+    width: 2.5em;  /* Taille du spinner ajustée avec em */
+    height: 2.5em;  /* Taille du spinner ajustée avec em */
+    animation: spin 1s linear infinite;  /* Animation de rotation infinie */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
   

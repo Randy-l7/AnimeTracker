@@ -16,9 +16,15 @@
     <div class="card-box">
       <div class="card" *ngFor="let anime of animesList"  (click)="goToAnime(anime.mal_id)">
         <span class="anime-image">
-          <img [src]="anime.images.jpg.image_url" alt="{{ anime.title }}">
+          <img [src]="anime.images.webp.large_image_url" alt="{{ anime.title }}">
         </span>
         <span class="anime-title">{{ anime.title }}</span>
+        <div class="anime-score">
+          <span class="material-symbols-outlined star" style="color: yellow; fill: yellow;">
+            kid_star
+          </span>
+          <span class="score-number">{{ anime.score.toFixed(1) }}</span>
+        </div>
         <!-- <span>{{anime.rating}}</span> -->
         <!-- <span class="anime-desc">{{ anime.synopsis }}</span> -->
          <span class="anime-members">{{anime.members}} Members</span>

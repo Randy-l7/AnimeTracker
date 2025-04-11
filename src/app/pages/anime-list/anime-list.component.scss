@@ -54,13 +54,15 @@ h2 {
     .card {
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
       background-color: #121419;
       border-radius: 16px;
       border: 1px solid var(--border-color);
       overflow: hidden;
       width: 15em;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 8px rgba(138, 43, 226, 0.1), 0 4px 8px rgba(75, 0, 130, 0.1), 0 6px 16px rgba(138, 43, 226, 0.1), 0 6px 16px rgba(75, 0, 130, 0.1);
+      box-shadow: 0 2px 4px rgba(138, 43, 226, 0.1), 0 2px 4px rgba(75, 0, 130, 0.1), 0 4px 8px rgba(138, 43, 226, 0.1), 0 4px 8px rgba(75, 0, 130, 0.1);
       
 
       position: relative;
@@ -81,6 +83,7 @@ h2 {
             border-bottom: 1px solid var(--border-color);
           }
 
+
           .anime-title {
             color: #fff;
             font-size: 1em;
@@ -97,6 +100,28 @@ h2 {
             text-align: center;
             padding-bottom:0.5em ;
           }
+
+          .anime-score {
+            display: flex;
+            flex-direction: row;
+            position:absolute;
+            left: 11rem;
+            top:0.4rem;
+            padding: 0.3rem;
+            border-radius: 0.2rem;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5); /* noir avec 40% d'opacité */
+            gap: 0.1rem;
+
+            
+
+            .star {
+              font-size: 1rem;
+              padding-top: 0.1rem;
+            }
+          
+          }
+
 
 
         span {
@@ -166,29 +191,23 @@ h2 {
     margin-top: 40px;
   }
 
-  .loading-spinner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 6em;  /* Ajusté à 6em pour l'exemple */
-    font-size: 1.2em;  /* Taille de police ajustée */
+  
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 50,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .spinner {
-    border: 0.3em solid rgba(255, 255, 255, 0.3);  /* Couleur de fond du spinner */
-    border-top: 0.3em solid #7f3ca8;  /* Couleur du bord supérieur du spinner */
-    border-radius: 50%;  /* Cercle parfait */
-    width: 2.5em;  /* Taille du spinner ajustée avec em */
-    height: 2.5em;  /* Taille du spinner ajustée avec em */
-    animation: spin 1s linear infinite;  /* Animation de rotation infinie */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  
-  
-  
+}

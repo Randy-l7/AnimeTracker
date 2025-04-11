@@ -5,14 +5,36 @@ import { CommonModule } from '@angular/common';
 import { debounceTime } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import {
+//   trigger,
+//   transition,
+//   style,
+//   animate,
+//   query,
+//   stagger
+// } from '@angular/animations';
 
 
 @Component({
   selector: 'app-anime-list',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,BrowserAnimationsModule],
   templateUrl: './anime-list.component.html',
-  styleUrl: './anime-list.component.scss'
+  styleUrl: './anime-list.component.scss',
+  // animations: [
+  //   trigger('listAnimation', [
+  //     transition('* => *', [
+  //       query(':enter', [
+  //         style({ opacity: 0, transform: 'translateY(20px)' }),
+  //         stagger(100, [
+  //           animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+  //         ])
+  //       ], { optional: true })
+  //     ])
+  //   ])
+  // ]
+  
+  
 })
 export class AnimeListComponent implements OnInit {
 
@@ -23,6 +45,8 @@ isLoading: boolean = false;
 isSearching: boolean = false;
 
 anime: Anime[] = [];
+
+
 
 constructor(
   private router: Router,

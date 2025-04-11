@@ -22,6 +22,7 @@ export interface Anime {
     rating: string;
     genres: string[];
     popularity: number;
+    score: number;
     members: number;
     pagination: {
         last_visible_page: number;

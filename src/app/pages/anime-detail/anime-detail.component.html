@@ -1,14 +1,23 @@
+
+<div *ngIf="isLoading">
+<ng-template>
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+</ng-template>
+</div>
+
 <div class="anime-detail">
 <div class="anime-info" *ngIf="!isLoading && anime">
-    <img class="main-img" [src]="anime.images.jpg.image_url" alt="{{ anime.title }}">
-    <h1>{{ anime.title }}</h1>
+    <img class="main-img" [src]="anime.images.webp .large_image_url" alt="{{ anime.title }}">
+    <h1>{{ anime.title }}</h1></div>
+    <div class="secondary-info">
     <p>{{ anime.synopsis }}</p>
     <p>Score:{{ anime.score }}</p>
     <p>Nombre de membres: {{ anime.members }}</p>
     <p>Nombre de rating: {{ anime.rating }}</p>
+    
+  </div>
   </div>
   
-  <div *ngIf="isLoading">
-    <p>Chargement en cours...</p>
-  </div>
-</div>
+ 
