@@ -1,23 +1,59 @@
-
 <div *ngIf="isLoading">
-<ng-template>
-  <div class="loading-spinner">
-    <div class="spinner"></div>
-  </div>
-</ng-template>
+  <ng-template>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
 </div>
 
+
 <div class="anime-detail">
-<div class="anime-info" *ngIf="!isLoading && anime">
-    <img class="main-img" [src]="anime.images.webp .large_image_url" alt="{{ anime.title }}">
-    <h1>{{ anime.title }}</h1></div>
-    <div class="secondary-info">
+  <div class="anime-info" *ngIf="!isLoading && anime">
+    <div class="main-box">
+      <img
+        class="main-img"
+        [src]="anime.images.webp.large_image_url"
+        alt="{{ anime.title }}"
+      />
+
+      <button class="trailer-btn" (click)="showModal = true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <polygon points="6 3 20 12 6 21 6 3"></polygon>
+        </svg>
+        <p>WATCH TRAILER</p>
+      </button>
+    </div>
+    <div class="main-info">
+      <h1>{{ anime.title }}</h1>
+      <h2>{{ anime.title_english }}<br>{{ anime.title_japanese }}</h2>
+      <div class="small-text">
+        <div class="score">
+          <span
+            class="material-symbols-outlined star"
+            style="color: yellow; fill: yellow;"
+          >
+            kid_star
+          </span>
+          <div class="number-score">
+            <span>{{ anime.score }}</span>
+            <span class="scored_by">({{ anime.scored_by | number }})</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="secondary-info">
     <p>{{ anime.synopsis }}</p>
-    <p>Score:{{ anime.score }}</p>
+    <p>Score: {{ anime.score }}</p>
     <p>Nombre de membres: {{ anime.members }}</p>
     <p>Nombre de rating: {{ anime.rating }}</p>
-    
   </div>
-  </div>
-  
- 
+</div>
+
+<app-modal-video
+  *ngIf="showModal"
+  [videoUrl]="anime.trailer.embed_url"
+  (close)="showModal = false"
+></app-modal-video>
