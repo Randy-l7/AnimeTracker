@@ -4,10 +4,11 @@
     display: flex;
     flex-direction: column;
     .secondary-info {
-        margin-top: 2em;
+        margin-top: 1rem;
         padding: 1em;
         border: 1px solid var(--border-color);
         border-radius: 5px;
+        opacity: 0.90;
     }
 
 }
@@ -92,11 +93,33 @@
     flex-direction: column;
     margin-left: 2em;
 
-    h1 {
-        
-        font-weight: 900;
+    .main-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         font-size: 3rem;
+        h1 {
+        
+            font-weight: 900;
+            font-size: clamp(1rem, 2.5vw, 3rem);
+            
+        }
+
+        .rank {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            background-color: var(--primary-color);
+            padding-inline: 0.5rem;
+            border-radius: 5px;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            height: 3.5rem;
+
+        }
     }
+
+    
 
     h2 {
         font-weight: 300;
@@ -108,17 +131,26 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 0.0rem;
-        
-        .score {
-            margin-top: 0.5rem;
-            display: flex;
-            flex-direction: row;
-            background-color: var(--purple-second);
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+
+        > * {
             border-radius:10px;
             padding: 0.3rem;
             font-size: 0.8rem;
             gap: 0.5rem;
+          }
+
+        .episode-count {
+            background-color: #333;
+        }
+        
+        .score {
+            
+            display: flex;
+            flex-direction: row;
+            background-color: var(--purple-second);
+            
             
             .star {
                 font-size: 0.8rem;
@@ -136,4 +168,8 @@
         }
 
     }
+}
+
+.italic {
+    font-style: italic;
 }
