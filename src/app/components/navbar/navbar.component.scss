@@ -3,7 +3,6 @@ header {
     display: flex;
     padding-inline: 2em;
     padding-block: 0.8em;
-    background-color: #7f3ca8;
     color: white;
     align-items: center;
     justify-content: space-between;
@@ -11,6 +10,15 @@ header {
     top: 0;
     left: 0;
     z-index: 2; 
+    height: 5vh;
+    border-top: 1px solid rgba(127, 60, 168, 0.5);
+    border-bottom: 1px solid rgba(127, 60, 168, 0.5);
+    border-radius: 5px;
+    
+    .logo {
+        width: 4rem;    /* Définissez seulement la largeur */
+        height: auto;     /* La hauteur s'ajustera automatiquement */
+    }
 
     nav {
         display: flex;

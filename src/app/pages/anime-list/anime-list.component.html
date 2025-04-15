@@ -32,8 +32,8 @@
     </div>
   </div>
 
-  <div class="pagination">
-    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+  <div class="pagination  ">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
     <button *ngFor="let page of [currentPage-2, currentPage-1, currentPage, currentPage+1, currentPage+2]"
             (click)="goToPage(page)"
             [class.active]="page === currentPage"
@@ -42,15 +42,15 @@
       {{ page }}
     </button>
   
-    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage+1 === null">Suivant</button>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage+1 === null">Next</button>
   </div>
 
   <button (click)="loadMore()" [disabled]="animeService.isLoading()">
-    Charger plus d'animes
+    Load more animes
   </button>
 </div>
   <ng-template #noAnimes>
-    <p class="message">Aucun anime à afficher pour le moment.</p>
+    <p class="message">No anime to display at the moment.</p>
     <div class="loading-spinner">
       <div class="spinner"></div>
     </div>
