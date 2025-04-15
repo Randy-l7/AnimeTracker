@@ -50,8 +50,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all",
-              "baseHref": "/anime-tracker/"
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
