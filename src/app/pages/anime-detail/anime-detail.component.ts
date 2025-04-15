@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { AnimeService } from '../../services/anime.service';
 import { CommonModule } from '@angular/common';
 import { ModalVideoComponent } from '../../components/modal-video/modal-video.component';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-anime-detail',
-  imports: [CommonModule,ModalVideoComponent],
+  imports: [CommonModule,ModalVideoComponent,FormsModule],
   templateUrl: './anime-detail.component.html',
   styleUrl: './anime-detail.component.scss'
 })
@@ -16,6 +18,7 @@ export class AnimeDetailComponent implements OnInit {
   animeId!: number;
   anime: any;
   isLoading = true;
+  genres: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +34,13 @@ export class AnimeDetailComponent implements OnInit {
     this.animeService.getAnimeById(this.animeId).subscribe((response) => {
       console.log('anime data:', response);
       this.anime = response.data;
+      this.genres = this.anime.genres.map((genre: any) => genre.name);
+      console.log(this.genres);
       this.isLoading = false;
     });
+
 }
+
+
 
 }

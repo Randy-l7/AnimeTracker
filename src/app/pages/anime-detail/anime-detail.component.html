@@ -26,32 +26,34 @@
     <div class="main-info">
       <div class="main-title">
       <h1>{{ anime.title }}</h1>
-      <span class="rank">#{{anime.rank}}</span>
+      <span class="rank">Rank #{{anime.rank}}</span>
     </div>
       <h2>{{ anime.title_english }}<br>{{ anime.title_japanese }}</h2>
       <div class="small-text">
-        <div class="score">
-          <span
-            class="material-symbols-outlined star"
-            style="color: yellow; fill: yellow;"
-          >
-            kid_star
-          </span>
-          <div class="number-score">
-            <span>{{ anime.score }}</span>
-            <span class="scored_by">({{ anime.scored_by | number }})</span>
+        <div class="left-part">
+          <div class="score">
+            <span class="material-symbols-outlined star" style="color: yellow; fill: yellow;">kid_star</span>
+            <div class="number-score">
+              <span>{{ anime.score }}</span>
+              <span class="scored_by">({{ anime.scored_by | number }})</span>
+            </div>
+          </div>
+          <div class="episode-count">
+            <span>{{ anime.episodes }} – Episodes</span>
           </div>
         </div>
-        <div class="episode-count">
-          <span>{{anime.episodes}}  – Episodes</span>
+      
+        <div class="right-part">
+          <div *ngFor="let genre of genres" class="genre-tag">
+            <p>{{ genre }}</p>
+          </div>
         </div>
-        <!-- <div class="">
-          <span>{{anime.episodes}}  – Episodes</span>
-        </div> -->
-        
       </div>
+      
       <div class="secondary-info">
         <p>{{ anime.synopsis }}</p>
+        
+        
       </div>
     </div>
   </div>
