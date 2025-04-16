@@ -5,13 +5,17 @@
 
 
 <div class="main" > 
+  
 <div class="main-card"  >
   <div *ngIf="pagination">
     <p>Number of animes found : {{ pagination.items.total }}</p>
   </div>
     <h2>Anime List</h2>
+    <app-filter (filterChange)="handleFilterChange($event)"></app-filter>
     <div class="search-bar">
-      <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Find an Anime" (keydown.enter)="onSearch()">
+      
+      <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Find an Anime..." (keydown.enter)="onSearch()">
+      <button class="search-btn" (click)="onSearch()">Search</button>
     </div>
     <div class="card-box" *ngIf="animesList.length > 0 ; else noAnimes">
       <div class="card" *ngFor="let anime of animesList"  (click)="goToAnime(anime.mal_id)" [@cardAnimation]>
@@ -23,7 +27,7 @@
           <span class="material-symbols-outlined star" style="color: yellow; fill: yellow;">
             kid_star
           </span>
-          <span class="score-number">{{ anime.score.toFixed(1) }}</span>
+          <span class="score-number">{{ anime.score !== null ? anime.score.toFixed(1) : "N/A" }}</span>
         </div>
         <!-- <span>{{anime.rating}}</span> -->
         <!-- <span class="anime-desc">{{ anime.synopsis }}</span> -->
@@ -45,9 +49,9 @@
     <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage+1 === null">Next</button>
   </div>
 
-  <button (click)="loadMore()" [disabled]="animeService.isLoading()">
+  <!-- <button (click)="loadMore()" [disabled]="animeService.isLoading()">
     Load more animes
-  </button>
+  </button> -->
 </div>
   <ng-template #noAnimes>
     <p class="message">No anime to display at the moment.</p>

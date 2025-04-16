@@ -1,0 +1,12 @@
+<div class="sort">
+    <select  id="order-by" (change)="onOrderByChange($event)">
+        <option *ngFor="let option of orderByOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
+    </select>
+    <label for="sort"></label>
+    <select id="sort" (change)="onSortChange($event)">
+    <option value="desc" [selected]="selectedSort() === 'desc'">Descending</option>
+    <option value="asc" [selected]="selectedSort() === 'asc'">Ascending</option>
+    </select>
+</div>

@@ -17,8 +17,8 @@ export class AnimeService {
   
   private http = inject(HttpClient);
 
-  searchAnimes(query: string,page: number): Observable<{ data: Anime[],pagination: Pagination | null }> {
-    const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&order_by=score&sort=desc&limit=21&page=${page}`; 
+  searchAnimes(query: string,page: number,orderBy: string): Observable<{ data: Anime[],pagination: Pagination | null }> {
+    const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&order_by=${orderBy}&sort=desc&limit=21&page=${page}&sfw=true`; 
     return this.http.get<{ data: Anime[],pagination: Pagination }>(url).pipe(
       tap(response => console.log('Résultats de la recherche:', response)
     ),
@@ -34,8 +34,8 @@ export class AnimeService {
   }
 
   
-  fetchAnimes(page: number = 1): Observable<{ data: Anime[], pagination: any }> {
-    const url = `https://api.jikan.moe/v4/anime?page=${page}&limit=21&order_by=score&sort=desc`;
+  fetchAnimes(page: number = 1,orderBY: string ): Observable<{ data: Anime[], pagination: any }> {
+    const url = `https://api.jikan.moe/v4/anime?page=${page}&limit=21&order_by=${orderBY}&sort=desc&sfw=true`;
     console.log(`Fetching page ${page} from ${url}`);
     
     return this.http.get<{ data: Anime[], pagination: any }>(url).pipe(
@@ -47,13 +47,13 @@ export class AnimeService {
     );
   }
   
-  loadAnimes(page: number = 1) {
+  loadAnimes(page: number = 1,orderBY: string ) {
     this.isLoading.set(true);
     this.animes.set([]);
 
     
     // Commençons par charger seulement la première page
-    this.fetchAnimes(page).subscribe({
+    this.fetchAnimes(page,orderBY).subscribe({
       next: (response) => {
         // Vérifions ce que l'API nous renvoie
         console.log('Première page pagination:', response.pagination);
@@ -78,12 +78,12 @@ export class AnimeService {
     });
   }
 
-  loadSearchAnimes(query: string,page: number) {
+  loadSearchAnimes(query: string,page: number,orderBy : string) {
     this.isLoading.set(true);
     this.animes.set([]); // Vider les animes avant de charger les résultats de recherche
     
     // Charger les résultats de la recherche
-    this.searchAnimes(query,page).subscribe({
+    this.searchAnimes(query,page,orderBy).subscribe({
       next: (response) => {
         console.log('Résultats de la recherche:', response);
         const currentAnimes = [...response.data];
@@ -102,25 +102,25 @@ export class AnimeService {
   
 
   // Fonction pour charger plus d'animes (à appeler explicitement)
-  loadMoreAnimes(page: number) {
-    if (!this.isLoading()) {
-      this.isLoading.set(true);
+  // loadMoreAnimes(page: number) {
+  //   if (!this.isLoading()) {
+  //     this.isLoading.set(true);
       
-      this.fetchAnimes(page).subscribe({
-        next: (response) => {
-          const currentAnimes = [...this.animes()];
-          const updatedAnimes = [...currentAnimes, ...response.data];
-          this.animes.set(updatedAnimes);
-          console.log(`Chargé ${updatedAnimes.length} animes au total`);
-          this.isLoading.set(false);
-        },
-        error: (error) => {
-          console.error('Erreur lors du chargement de plus d\'animes:', error);
-          this.isLoading.set(false);
-        }
-      });
-    }
-  }
+  //     this.fetchAnimes(page,).subscribe({
+  //       next: (response) => {
+  //         const currentAnimes = [...this.animes()];
+  //         const updatedAnimes = [...currentAnimes, ...response.data];
+  //         this.animes.set(updatedAnimes);
+  //         console.log(`Chargé ${updatedAnimes.length} animes au total`);
+  //         this.isLoading.set(false);
+  //       },
+  //       error: (error) => {
+  //         console.error('Erreur lors du chargement de plus d\'animes:', error);
+  //         this.isLoading.set(false);
+  //       }
+  //     });
+  //   }
+  // }
 }
 // import { Injectable, signal } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';

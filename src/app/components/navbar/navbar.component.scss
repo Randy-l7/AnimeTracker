@@ -10,7 +10,7 @@ header {
     top: 0;
     left: 0;
     z-index: 2; 
-    height: 5vh;
+    height: 6vh;
     border-top: 1px solid rgba(127, 60, 168, 0.5);
     border-bottom: 1px solid rgba(127, 60, 168, 0.5);
     border-radius: 5px;
@@ -24,6 +24,7 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
         gap: 5em;
         
         span {
@@ -35,7 +36,10 @@ header {
 
 
         ul {
+            display: flex;
+            flex-direction: row;
             list-style: none;
+            gap: 1rem;
 
             li {
                 cursor: pointer;

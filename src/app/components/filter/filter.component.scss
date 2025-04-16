@@ -1,0 +1,16 @@
+.sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .sort select {
+    background-color: red;
+    border: 1px solid red;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    }
+}

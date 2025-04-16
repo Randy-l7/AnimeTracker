@@ -13,27 +13,40 @@ h2 {
     flex-direction: column;
     align-items: center;
     .search-bar {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
       position: relative;
-      max-width: 400px;
-      margin: 0 auto 2em;
+      width: 30%;
+      margin-bottom: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 30px;
       padding: 0.5em 1em;
+      
+      .search-input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 1.2em;
+        color: var(--text-color);
+        padding: 0.5rem 0.5rem;
+        border-radius: 5px;
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+       
+      }
+      .search-btn {
+        margin: 0;
+        padding-block: 0.675rem;
+        border: none;
+
+      }
+
     }
     
     
-    .search-input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 1.2em;
-      color: #333;
-      padding: 0.75em 1em;
-      border-radius: 25px;
-      background-color: #f7f7f7;
-    }
+    
     
     .search-input::placeholder {
       color: #888;
