@@ -8,13 +8,14 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 10rem;
-    background-image: url('/img/main-image.webp');
+    // background-image: url('img/main-image.webp');
     background-size: cover;       // L'image couvre toute la zone sans distorsion
     background-position: center;  // L'image est centrée dans l'élément
     background-repeat: no-repeat; // Pas de répétition de l'image
     height: 94vh;                // La hauteur du conteneur = 100% de la hauteur de la fenêtre
     width: 100%;
     z-index: 1;
+    user-select: none;
                      
     &::before {
       content: "";
@@ -34,6 +35,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
+  user-select: none;
 }
 
 

@@ -1,16 +1,53 @@
 .sort {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    .sort select {
-    background-color: red;
-    border: 1px solid red;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    }
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
+
+
+
+  
+  .mdc-text-field--outlined .mat-mdc-form-field-infix,
+  .mdc-text-field--no-label .mat-mdc-form-field-infix {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  
+  :host ::ng-deep {
+    .mat-mdc-select-panel .mat-mdc-option {
+        color: #fff;
+     }
+    .mat-mdc-form-field {
+      width: 12rem;
+      
+      .mat-mdc-select-value-text,
+      .mat-mdc-select-arrow {
+        color: #fff;
+        
+      }
+
+      
+  
+
+      
+      
+      .mat-mdc-form-field-infix {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem;
+        min-height: auto;
+      }
+      
+      .mat-mdc-form-field-wrapper {
+        padding-bottom: 0;
+
+        
+      }
+    }
+
+
+  }
+

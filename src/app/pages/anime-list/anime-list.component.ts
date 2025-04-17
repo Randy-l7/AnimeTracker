@@ -49,7 +49,7 @@ constructor(
 ) {}
 
 ngOnInit(): void {
-  this.animeService.loadAnimes(this.currentPage,this.selectedOrderBy);
+  this.animeService.loadAnimes(this.currentPage,this.selectedOrderBy,this.selectedSort);
   // console.log("VOITURE VROOM VROOM",this.animeService.pagination().last_visible_page)
   // setInterval(() => this.loadMore(), 500);
 }
@@ -72,8 +72,8 @@ handleFilterChange(event: { orderBy: string, sort: string }) {
     this.selectedSort = event.sort;
 
   !this.isSearching 
-  ?  this.animeService.loadAnimes(1,this.selectedOrderBy)
-  : this.animeService.loadSearchAnimes(this.searchTerm, 1,this.selectedOrderBy)
+  ?  this.animeService.loadAnimes(1,this.selectedOrderBy,this.selectedSort)
+  : this.animeService.loadSearchAnimes(this.searchTerm, 1,this.selectedOrderBy,this.selectedSort)
 }
 
 
@@ -81,8 +81,8 @@ handleFilterChange(event: { orderBy: string, sort: string }) {
 goToPage(page: number) {
   this.currentPage = page;
   !this.isSearching
-     ? this.animeService.loadAnimes(page,this.selectedOrderBy)
-     : this.animeService.loadSearchAnimes(this.searchTerm, page,this.selectedOrderBy)
+     ? this.animeService.loadAnimes(page,this.selectedOrderBy,this.selectedSort)
+     : this.animeService.loadSearchAnimes(this.searchTerm, page,this.selectedOrderBy,this.selectedSort)
 
 }
 
@@ -93,12 +93,12 @@ onSearch() {
     debounceTime(1000);
     this.currentPage = 1
     this.isSearching = true
-    this.animeService.loadSearchAnimes(this.searchTerm,this.currentPage,this.selectedOrderBy);
+    this.animeService.loadSearchAnimes(this.searchTerm,this.currentPage,this.selectedOrderBy,this.selectedSort);
 
 
     }
     else {
-      this.animeService.loadAnimes(1,this.selectedOrderBy)
+      this.animeService.loadAnimes(1,this.selectedOrderBy,this.selectedSort)
     }
   }
 

@@ -10,4 +10,5 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
+  imagePath: string = "img/main-image.webp"
 }

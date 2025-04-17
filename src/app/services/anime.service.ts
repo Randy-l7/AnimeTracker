@@ -17,8 +17,8 @@ export class AnimeService {
   
   private http = inject(HttpClient);
 
-  searchAnimes(query: string,page: number,orderBy: string): Observable<{ data: Anime[],pagination: Pagination | null }> {
-    const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&order_by=${orderBy}&sort=desc&limit=21&page=${page}&sfw=true`; 
+  searchAnimes(query: string,page: number,orderBy: string,sort: string): Observable<{ data: Anime[],pagination: Pagination | null }> {
+    const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&order_by=${orderBy}&sort=${sort}&limit=21&page=${page}&sfw=true`; 
     return this.http.get<{ data: Anime[],pagination: Pagination }>(url).pipe(
       tap(response => console.log('Résultats de la recherche:', response)
     ),
@@ -34,8 +34,8 @@ export class AnimeService {
   }
 
   
-  fetchAnimes(page: number = 1,orderBY: string ): Observable<{ data: Anime[], pagination: any }> {
-    const url = `https://api.jikan.moe/v4/anime?page=${page}&limit=21&order_by=${orderBY}&sort=desc&sfw=true`;
+  fetchAnimes(page: number = 1,orderBY: string,sort: string ): Observable<{ data: Anime[], pagination: any }> {
+    const url = `https://api.jikan.moe/v4/anime?page=${page}&limit=21&order_by=${orderBY}&sort=${sort}&sfw=true`;
     console.log(`Fetching page ${page} from ${url}`);
     
     return this.http.get<{ data: Anime[], pagination: any }>(url).pipe(
@@ -47,13 +47,13 @@ export class AnimeService {
     );
   }
   
-  loadAnimes(page: number = 1,orderBY: string ) {
+  loadAnimes(page: number = 1,orderBY: string,sort: string ) {
     this.isLoading.set(true);
     this.animes.set([]);
 
     
     // Commençons par charger seulement la première page
-    this.fetchAnimes(page,orderBY).subscribe({
+    this.fetchAnimes(page,orderBY,sort).subscribe({
       next: (response) => {
         // Vérifions ce que l'API nous renvoie
         console.log('Première page pagination:', response.pagination);
@@ -78,12 +78,12 @@ export class AnimeService {
     });
   }
 
-  loadSearchAnimes(query: string,page: number,orderBy : string) {
+  loadSearchAnimes(query: string,page: number,orderBy : string,sort: string) {
     this.isLoading.set(true);
     this.animes.set([]); // Vider les animes avant de charger les résultats de recherche
     
     // Charger les résultats de la recherche
-    this.searchAnimes(query,page,orderBy).subscribe({
+    this.searchAnimes(query,page,orderBy,sort).subscribe({
       next: (response) => {
         console.log('Résultats de la recherche:', response);
         const currentAnimes = [...response.data];

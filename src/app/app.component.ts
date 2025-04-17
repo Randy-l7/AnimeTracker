@@ -5,7 +5,7 @@ import { ModalVideoComponent } from "./components/modal-video/modal-video.compon
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, ModalVideoComponent],
+  imports: [RouterOutlet, NavbarComponent],
   template:``,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

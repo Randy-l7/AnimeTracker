@@ -1,12 +1,18 @@
 <div class="sort">
-    <select  id="order-by" (change)="onOrderByChange($event)">
-        <option *ngFor="let option of orderByOptions" [value]="option.value">
-            {{ option.label }}
-          </option>
-    </select>
-    <label for="sort"></label>
-    <select id="sort" (change)="onSortChange($event)">
-    <option value="desc" [selected]="selectedSort() === 'desc'">Descending</option>
-    <option value="asc" [selected]="selectedSort() === 'asc'">Ascending</option>
-    </select>
-</div>
+    <mat-form-field appearance="outline">
+      <mat-select id="order-by" [value]="selectedOrderBy()" 
+                  (selectionChange)="onOrderByChangeWrapper($event)">
+        <mat-option *ngFor="let option of orderByOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-select id="sort" [value]="selectedSort()" 
+                  (selectionChange)="onSortChangeWrapper($event)">
+        <mat-option value="desc">Descending</mat-option>
+        <mat-option value="asc">Ascending</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>

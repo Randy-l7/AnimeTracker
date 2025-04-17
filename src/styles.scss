@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :root {
   --primary-color: #7f3ca8;
   --purple-second: #4a2261;
@@ -9,6 +11,25 @@
    --accent-blue: #3b82f6;
 }
 
+
+
+:root {
+  @include mat.select-overrides((
+    panel-background-color: #ffffffe5,
+    enabled-trigger-text-color: #fff,
+    disabled-trigger-text-color: #fff,
+    placeholder-text-color: #fff,
+    enabled-arrow-color: #fff,
+    focused-arrow-color: #fff,
+  ));
+
+  @include mat.form-field-overrides((
+    outlined-outline-color: var(--border-color), // Remplacer outline-color
+    outlined-hover-outline-color: var(--border-color), // Remplacer hover-outline-color
+    outlined-outline-width: 0.1rem, // Remplacer outline-width
+    outlined-focus-outline-color: var(--border-color)
+  ));
+}
 
 
 *, *::before, *::after {
@@ -51,3 +72,5 @@
   }
   
   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
