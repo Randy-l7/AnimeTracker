@@ -1,0 +1,11 @@
+<p>Schedule works!</p>
+<div class="anime-cards">
+  <div *ngFor="let anime of animesList" (click)="goToAnime(anime.mal_id)" class="anime-card">
+    <div class="anime-image">
+      <img [src]="anime.images.webp.large_image_url" alt="{{ anime.title }}">
+    </div>
+    <div class="anime-info">
+      <h3 class="anime-title">{{ anime.title }}</h3>
+    </div>
+  </div>
+</div>

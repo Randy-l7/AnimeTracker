@@ -21,12 +21,18 @@ export const routes: Routes = [
           return import('./pages/anime-detail/anime-detail.component').then((m) => m.AnimeDetailComponent);
         },
       },
-      {
-        path: 'search',
-        loadComponent: () => {
-          return import('./pages/search-page/search-page.component').then((m) => m.SearchPageComponent);
-        },
-      }
+      // {
+      //   path: 'search',
+      //   loadComponent: () => {
+      //     return import('./pages/search-page/search-page.component').then((m) => m.SearchPageComponent);
+      //   },
+      // },
+      // {
+      //   path: 'schedule',
+      //   loadComponent: () => {
+      //     return import('./pages/schedule/schedule.component').then((m) => m.ScheduleComponent);
+      //   },
+      // }
       
     
   ];

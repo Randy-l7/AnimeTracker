@@ -224,3 +224,47 @@ h2 {
     opacity: 1;
   }
 }
+
+
+@media (max-width: 767px) {
+
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .main {
+    .search-input {
+      width: 15rem !important;
+    }
+    .search-bar {
+      flex-direction: column;
+      margin-bottom: 0.1rem;
+    }
+
+    .sort {
+     
+    }
+  }
+  
+
+  .pagination {
+    margin: 0;
+    gap: 1rem;
+    margin-top: 1rem;
+    
+
+    button {
+      margin: 0;
+      padding: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+ 
+
+  }
+
+
+ }

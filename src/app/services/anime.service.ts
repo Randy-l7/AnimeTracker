@@ -4,6 +4,7 @@ import { Anime, Pagination } from '../models/anime';
 import { inject } from '@angular/core';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 
 @Injectable({
@@ -16,6 +17,47 @@ export class AnimeService {
   baseUrl = 'https://api.jikan.moe/v4';
   
   private http = inject(HttpClient);
+
+
+  
+
+
+  searchAnimesSchedule(page: number): Observable<{ data: Anime[], pagination: Pagination | null }> {
+    const url = `https://api.jikan.moe/v4/anime?page=${page}&status=airing&sort=asc&min_members=2000`;
+    
+    return this.http.get<{ data: Anime[], pagination: Pagination }>(url).pipe(
+      tap(response => console.log('Résultats de la recherche de planning:', response)),
+      catchError(error => {
+        console.error('Erreur lors de la recherche de planning:', error);
+        return of({ data: [], pagination: null }); // Retourne une liste vide en cas d'erreur
+      })
+    );
+  }
+
+  loadSearchScheduleAnimes( page: number) {
+    this.isLoading.set(true);
+    this.animes.set([]); // Vider les animes avant de charger les résultats de recherche
+
+    // Charger les résultats de la recherche de planning
+    this.searchAnimesSchedule(page).subscribe({
+      next: (response) => {
+        console.log('Résultats de la recherche de planning:', response);
+        const currentAnimes = [...response.data];
+        this.animes.set(currentAnimes);
+        this.pagination.set(response.pagination);
+        console.log(`Chargé ${currentAnimes.length} animes de planning`);
+        this.isLoading.set(false);
+      },
+      error: (error) => {
+        console.error('Erreur lors du chargement des résultats de recherche de planning:', error);
+        this.isLoading.set(false);
+      }
+    });
+  }
+
+
+
+
 
   searchAnimes(query: string,page: number,orderBy: string,sort: string): Observable<{ data: Anime[],pagination: Pagination | null }> {
     const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&order_by=${orderBy}&sort=${sort}&limit=21&page=${page}&sfw=true`; 
@@ -47,7 +89,7 @@ export class AnimeService {
     );
   }
   
-  loadAnimes(page: number = 1,orderBY: string,sort: string ) {
+  loadAnimes(page: number = 1, orderBY: string = 'score', sort: string = 'desc') {
     this.isLoading.set(true);
     this.animes.set([]);
 

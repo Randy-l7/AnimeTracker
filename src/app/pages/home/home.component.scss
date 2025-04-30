@@ -61,3 +61,11 @@ h1 {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }
   
+  @media (max-width: 767px) {
+
+    h1 {
+      text-align: center;
+    }
+
+
+   }
